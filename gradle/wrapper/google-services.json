@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "81108285600",
+    "firebase_url": "https://medtracker-4a26c.firebaseio.com",
+    "project_id": "medtracker-4a26c",
+    "storage_bucket": "medtracker-4a26c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81108285600:android:8f6ab89e85983e3fb3b1c5",
+        "android_client_info": {
+          "package_name": "com.example.medtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81108285600-4q9gkjdsimp7l20h3nosc3e4lqkinm8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpZAbuOhkwe44uy8Hpq1VKjxHKVx1bsyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81108285600-4q9gkjdsimp7l20h3nosc3e4lqkinm8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
