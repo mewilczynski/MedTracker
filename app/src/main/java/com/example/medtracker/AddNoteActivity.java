@@ -21,8 +21,8 @@ import com.google.firebase.firestore.Query;
 public class AddNoteActivity extends AppCompatActivity {
 
     private FirebaseFirestore mDatabase;
-
-
+    //uids will increase as user adds notes and the value will hold throughout
+    public static int uid = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,6 +36,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent);
                 writeNewNote();
+                uid++;
             }
         });
     }
@@ -68,10 +69,11 @@ public class AddNoteActivity extends AppCompatActivity {
         EditText editTxtDate = (EditText) findViewById(R.id.editDateText);
         String date = editTxtDate.getText().toString();
 
-        int uid = 0;
+
 
         Note newNote = new Note(note, date, uid);
 
-        notes.document("0").set(newNote);
+        notes.document(Integer.toString(uid)).set(newNote);
+
     }
 }
