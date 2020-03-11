@@ -1,6 +1,7 @@
 package com.example.medtracker;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,23 +12,32 @@ import android.widget.TextView;
 
 //import com.google.firebase.firestore.DocumentReference;
 //import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.DocumentReference;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class NotesActivity extends AppCompatActivity {
-
+    private NoteClass note1;
     private FirebaseFirestore mDatabase ;
+    private static final String NOTE = "note";
+    private static final String DATE = "today";
     private Query m1Query;
     String note;
     String date;
+    String snapshot = "";
     int count = 0;
-    private CollectionReference note1;
+    //private CollectionReference note1;
     private CollectionReference note2;;
 
     @Override
@@ -55,25 +65,26 @@ public class NotesActivity extends AppCompatActivity {
     {
 
         DocumentReference mQuery = mDatabase.collection("notes").document("0");
-       /* mQuery.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        mQuery.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                 note = documentSnapshot.getString("note");
-                date = documentSnapshot.getString("date");
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if(documentSnapshot.exists()){
+                        note = documentSnapshot.getString(NOTE);
+                        date = documentSnapshot.getString(DATE);
+                       // note1 = documentSnapshot.getData();
+                    }
+                }
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+        });
 
-            }
-        });*/
-        note = mQuery.collection("note").toString();
-        date = mQuery.collection("today").toString();
-       // note = note2;
+
+
         TextView disTxtDate = (TextView) findViewById(R.id.textView25);
-        String disText = "- " + date;
+        String disText = "- " + note;
         disTxtDate.setText(disText);
-        String date_text = "• " + note;
+        String date_text = "• " + date;
         TextView disTxtNote = (TextView) findViewById(R.id.textView24);
         //disText = "• " + note;
         disTxtNote.setText(date_text);
