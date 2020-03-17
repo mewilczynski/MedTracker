@@ -44,5 +44,6 @@
     <string name="note1">- Doctor said to rest.</string>
     <string name="note2">- Worked out...</string>
     <string name="add_note_title">Add Notes</string>
+    <string name="date_for_notes">Date (MMDDYYYY)</string>
 
 </resources>

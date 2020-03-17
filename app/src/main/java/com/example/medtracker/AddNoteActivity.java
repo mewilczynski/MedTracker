@@ -36,7 +36,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent);
                 writeNewNote();
-                uid++;
+               // uid++;
             }
         });
     }
