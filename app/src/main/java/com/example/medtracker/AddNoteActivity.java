@@ -18,6 +18,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddNoteActivity extends AppCompatActivity {
 
     private FirebaseFirestore mDatabase;
@@ -61,17 +64,19 @@ public class AddNoteActivity extends AppCompatActivity {
 
 
     private void writeNewNote() {
+        Date date = new Date();
+        final String sdate = new SimpleDateFormat("MM-dd-yyyy").format(date);
 
         CollectionReference notes = mDatabase.collection("notes");
         EditText editTxtNote = (EditText) findViewById(R.id.editNoteText);
         String note = editTxtNote.getText().toString();
 
         EditText editTxtDate = (EditText) findViewById(R.id.editDateText);
-        String date = editTxtDate.getText().toString();
+        //String date = editTxtDate.getText().toString();
 
 
 
-        Note newNote = new Note(note, date, uid);
+        Note newNote = new Note(note, sdate, uid);
 
         notes.document(Integer.toString(uid)).set(newNote);
 

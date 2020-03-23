@@ -95,9 +95,7 @@ public class NotesActivity extends AppCompatActivity {
                             String disText = "- " + note;
 
                             disTxtDate.setText(disText);
-                            String date_text = "• " + date.charAt(0) + date.charAt(1) + "/"
-                                    + date.charAt(2) + date.charAt(3) + "/" + date.charAt(4) + date.charAt(5)
-                                    + date.charAt(6) + date.charAt(7);;
+                            String date_text = "• " + date;
                             //TextView disTxtNote = (TextView) findViewById(R.id.textView24);
                             //disText = "• " + note;
                             disTxtNote.setText(date_text);
