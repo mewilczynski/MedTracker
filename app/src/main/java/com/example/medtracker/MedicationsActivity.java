@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,8 @@ public class MedicationsActivity extends AppCompatActivity {
     //private static Vector<Med> medVec = new Vector<Med>(100);
 
     private int j = 1;
+    private int k = 1;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +52,17 @@ public class MedicationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medications);
 
-
+        LinearLayout layout11 = (LinearLayout) findViewById(R.id.linearLayouta3);
+        layout11.setVisibility(View.GONE);
 
         for(int i = 0; i<10;i++){
             String SLid = "med"+ Integer.toString(i+1);
+            int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
+            ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
+            layout.setVisibility(View.GONE);
+        }
+        for(int i = 0; i<10;i++){
+            String SLid = "meda"+ Integer.toString(i+1);
             int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
             ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
             layout.setVisibility(View.GONE);
@@ -70,6 +81,25 @@ public class MedicationsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        SearchView search = (SearchView) findViewById(R.id.search);
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //key = query;
+                //populateSearchList();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                key = newText;
+                populateSearchList();
+                return false;
+            }
+        });
+
     }
 
     private void populateList(){
@@ -105,8 +135,60 @@ public class MedicationsActivity extends AppCompatActivity {
                                     j++;
                                 }
 
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
 
 
+
+    }
+
+    private void populateSearchList(){
+
+        for(int i = 0; i<10;i++){
+            String SLid = "meda"+ Integer.toString(i+1);
+            int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
+            ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
+            layout.setVisibility(View.GONE);
+        }
+        k = 1;
+
+        mDatabase.collection("medications").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Med med  = document.toObject(Med.class);
+                                medVec.add(med);
+
+                                if(k<=10){
+                                    if(med.getName().toString().contains(key) || med.getType().toString().contains(key)){
+                                        String SLid = "meda"+ Integer.toString(k);
+                                        int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
+                                        ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
+
+                                        //textview
+                                        String Stxtid = "medtxta"+Integer.toString(k);
+                                        int txtid = getResources().getIdentifier(Stxtid,"id", getPackageName());
+                                        TextView med1 = (TextView) findViewById(txtid);
+                                        String m1 = "• "+med.getType() + " " + med.getName() + " - " + med.getDosage() + "mg";
+                                        med1.setText(m1);
+
+                                        layout.setVisibility(View.VISIBLE);
+                                        LinearLayout layout11 = (LinearLayout) findViewById(R.id.linearLayouta3);
+                                        layout11.setVisibility(View.VISIBLE);
+                                        k++;
+                                    }else{
+                                        LinearLayout layout11 = (LinearLayout) findViewById(R.id.linearLayouta3);
+                                        layout11.setVisibility(View.VISIBLE);
+                                    }
+
+                                }
 
                             }
                         } else {
@@ -115,71 +197,18 @@ public class MedicationsActivity extends AppCompatActivity {
                     }
                 });
 
-        Vector<Med> m = medVec;
-/*
-        for(int i = 0; i < 10; i++){
-            if(i<m.size()/2){
-                //layout
-                String SLid = "med"+ Integer.toString(i+1);
-                int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
-                ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
-
-                //textview
-                String Stxtid = "medtxt"+Integer.toString(i+1);
-                int txtid = getResources().getIdentifier(Stxtid,"id", getPackageName());
-                TextView med1 = (TextView) findViewById(txtid);
-                String m1 = "• "+m.elementAt(i).getType() + " " + m.elementAt(i).getName() + " - " + m.elementAt(i).getDosage() + "mg";
-                med1.setText(m1);
-
-                layout.setVisibility(View.VISIBLE);
-            }
-
-
-        }
-
-*/
-
-
-
-
-        //((Globals) this.getApplication()).setMedVector(medVec);
-       // updateMed();
-    }
-
-    private void updateMed(){
-
-        Vector<Med> m = ((Globals) this.getApplication()).getMedVector();
-
-        for(int i = 0; i < 10; i++){
-            if(i<m.size()/2){
-                //layout
-                String SLid = "med"+ Integer.toString(i+1);
-                int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
-                ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
-
-                //textview
-                String Stxtid = "medtxt"+Integer.toString(i+1);
-                int txtid = getResources().getIdentifier(Stxtid,"id", getPackageName());
-                TextView med1 = (TextView) findViewById(txtid);
-                String m1 = "• "+m.elementAt(i).getType() + " " + m.elementAt(i).getName() + " - " + m.elementAt(i).getDosage() + "mg";
-                med1.setText(m1);
-
-                layout.setVisibility(View.VISIBLE);
-            }
-
-
-        }
-
-
 
     }
+
     @Override
     public void onResume(){
         super.onResume();
-        //updateMed();
+
         populateList();
         refreshView();
-       // updateMed();
+        LinearLayout layout11 = (LinearLayout) findViewById(R.id.linearLayouta3);
+        layout11.setVisibility(View.GONE);
+
     }
     private void refreshView(){
         NestedScrollView mScrollView = (NestedScrollView) findViewById(R.id.scroll);
