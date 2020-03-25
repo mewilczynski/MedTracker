@@ -77,7 +77,7 @@
 
         <LinearLayout
             android:layout_width="405dp"
-            android:layout_height="683dp"
+            android:layout_height="700dp"
             android:orientation="vertical">
 
             <ScrollView
@@ -95,7 +95,7 @@
 
                     <LinearLayout
                         android:id="@+id/linearLayout5"
-                        android:layout_width="0dp"
+                        android:layout_width="405dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -104,169 +104,421 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="486dp">
+                            android:layout_height="140dp"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextType"
+                            app:layout_constraintTop_toTopOf="@+id/editTextType">
 
                             <TextView
                                 android:id="@+id/textView15"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="1dp"
-                                android:layout_marginLeft="1dp"
-                                android:layout_marginTop="36dp"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="28dp"
+                                android:layout_marginBottom="10dp"
                                 android:text="@string/type"
                                 android:textSize="24sp"
-                                app:layout_constraintBottom_toTopOf="@+id/editText4"
-                                app:layout_constraintStart_toStartOf="@+id/editText4"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextType"
+                                app:layout_constraintStart_toStartOf="@+id/editTextType"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingConstraints" />
+
+                            <EditText
+                                android:id="@+id/editTextType"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="19dp"
+                                android:layout_marginEnd="19dp"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                                tools:ignore="MissingConstraints" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
 
                             <TextView
                                 android:id="@+id/textView16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="1dp"
-                                android:layout_marginLeft="1dp"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="6dp"
                                 android:text="@string/name"
                                 android:textSize="24sp"
-                                app:layout_constraintBottom_toTopOf="@+id/editText7"
-                                app:layout_constraintStart_toStartOf="@+id/editText7"
-                                app:layout_constraintTop_toBottomOf="@+id/editText4"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextName"
+                                app:layout_constraintStart_toStartOf="@+id/editTextName"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingConstraints" />
 
+                            <EditText
+                                android:id="@+id/editTextName"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView16"
+                                tools:ignore="MissingConstraints" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
                             <TextView
-                                android:id="@+id/textView18"
+                                android:id="@+id/textView27"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="27dp"
-                                android:layout_marginLeft="27dp"
-                                android:layout_marginBottom="4dp"
-                                android:text="@string/add_reminder_q"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/dosage_title"
                                 android:textSize="24sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextDos"
+                                app:layout_constraintStart_toStartOf="@+id/editTextDos"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingConstraints" />
+
+                            <EditText
+                                android:id="@+id/editTextDos"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="16dp"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView27"
+                                tools:ignore="MissingConstraints" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp">
 
                             <TextView
                                 android:id="@+id/textView17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginLeft="12dp"
-                                android:layout_marginBottom="7dp"
+                                android:layout_marginStart="29dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="247dp"
                                 android:text="@string/appearance"
                                 android:textSize="24sp"
-                                app:layout_constraintBottom_toTopOf="@+id/imageView3"
-                                app:layout_constraintStart_toStartOf="@+id/imageView3"
-                                app:layout_constraintTop_toBottomOf="@+id/editText7"
-                                tools:ignore="MissingConstraints" />
-
-                            <EditText
-                                android:id="@+id/editText4"
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_marginStart="27dp"
-                                android:layout_marginLeft="27dp"
-                                android:layout_marginEnd="27dp"
-                                android:layout_marginRight="27dp"
-                                android:layout_marginBottom="18dp"
-                                android:ems="10"
-                                android:inputType="textPersonName"
-                                app:layout_constraintBottom_toTopOf="@+id/textView16"
+                                app:layout_constraintBottom_toTopOf="@+id/bl_btn"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView15"
-                                tools:ignore="MissingConstraints" />
-
-                            <EditText
-                                android:id="@+id/editText7"
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_marginStart="27dp"
-                                android:layout_marginLeft="27dp"
-                                android:layout_marginEnd="27dp"
-                                android:layout_marginRight="27dp"
-                                android:layout_marginBottom="16dp"
-                                android:ems="10"
-                                android:inputType="textPersonName"
-                                app:layout_constraintBottom_toTopOf="@+id/textView17"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView16"
+                                app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingConstraints" />
 
                             <ImageView
-                                android:id="@+id/imageView3"
-                                android:layout_width="229dp"
-                                android:layout_height="0dp"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginBottom="12dp"
-                                app:layout_constraintBottom_toTopOf="@+id/textView18"
+                                android:id="@+id/bl"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="29dp"
+                                android:layout_marginEnd="10dp"
+                                app:layout_constraintBottom_toTopOf="@id/blc"
+                                app:layout_constraintEnd_toStartOf="@+id/br"
                                 app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/textView17"
+                                app:srcCompat="@drawable/yellow" />
+
+                            <ImageView
+                                android:id="@+id/brc"
+                                android:layout_width="64dp"
+                                android:layout_height="37dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="10dp"
+                                app:layout_constraintEnd_toStartOf="@id/gc"
+                                app:layout_constraintStart_toEndOf="@+id/blc_btn"
+                                app:layout_constraintTop_toBottomOf="@+id/g_btn"
+                                app:srcCompat="@drawable/brownc" />
+
+                            <ImageView
+                                android:id="@+id/gc"
+                                android:layout_width="64dp"
+                                android:layout_height="37dp"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="10dp"
+                                app:layout_constraintEnd_toStartOf="@id/pc"
+                                app:layout_constraintStart_toEndOf="@+id/brc"
+                                app:layout_constraintTop_toBottomOf="@+id/p_btn"
+                                app:srcCompat="@drawable/greenc" />
+
+                            <ImageView
+                                android:id="@+id/rc"
+                                android:layout_width="64dp"
+                                android:layout_height="37dp"
+                                android:layout_marginTop="101dp"
+                                android:layout_marginEnd="18dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/pc"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/redc" />
+
+                            <ImageView
+                                android:id="@+id/pc"
+                                android:layout_width="64dp"
+                                android:layout_height="37dp"
+                                android:layout_marginStart="9dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="15dp"
+                                app:layout_constraintEnd_toStartOf="@+id/rc"
+                                app:layout_constraintStart_toEndOf="@+id/gc"
+                                app:layout_constraintTop_toBottomOf="@+id/r_btn"
+                                app:srcCompat="@drawable/pinkc" />
+
+                            <ImageView
+                                android:id="@+id/blc"
+                                android:layout_width="64dp"
+                                android:layout_height="37dp"
+                                android:layout_marginStart="19dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="11dp"
+                                app:layout_constraintEnd_toStartOf="@+id/brc"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/bl_btn"
+                                app:srcCompat="@drawable/bluec" />
+
+                            <ImageView
+                                android:id="@+id/br"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="20dp"
+                                app:layout_constraintBottom_toTopOf="@id/brc_btn"
+                                app:layout_constraintEnd_toStartOf="@+id/g"
+                                app:layout_constraintStart_toEndOf="@+id/bl"
+                                app:layout_constraintTop_toBottomOf="@id/textView17"
+                                app:srcCompat="@drawable/brown" />
+
+                            <ImageView
+                                android:id="@+id/g"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="19dp"
+                                app:layout_constraintBottom_toTopOf="@+id/brc"
+                                app:layout_constraintEnd_toStartOf="@+id/p"
+                                app:layout_constraintStart_toEndOf="@id/br"
                                 app:layout_constraintTop_toBottomOf="@+id/textView17"
-                                app:srcCompat="@drawable/appea"
-                                tools:ignore="MissingConstraints" />
+                                app:srcCompat="@drawable/green" />
+
+                            <ImageView
+                                android:id="@+id/r"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="18dp"
+                                app:layout_constraintBottom_toTopOf="@+id/pc"
+                                app:layout_constraintStart_toEndOf="@+id/p"
+                                app:layout_constraintTop_toBottomOf="@id/textView17"
+                                app:srcCompat="@drawable/white" />
+
+                            <ImageView
+                                android:id="@+id/p"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="18dp"
+                                app:layout_constraintBottom_toTopOf="@+id/gc"
+                                app:layout_constraintEnd_toStartOf="@+id/r"
+                                app:layout_constraintStart_toEndOf="@+id/g"
+                                app:layout_constraintTop_toBottomOf="@id/textView17"
+                                app:srcCompat="@drawable/pink" />
+
+                            <Button
+                                android:id="@+id/blc_btn"
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintEnd_toStartOf="@id/brc"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/bl" />
+
+                            <Button
+                                android:id="@+id/brc_btn"
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="11dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintEnd_toStartOf="@+id/gc"
+                                app:layout_constraintStart_toEndOf="@+id/blc"
+                                app:layout_constraintTop_toBottomOf="@+id/g_btn" />
+
+                            <Button
+                                android:id="@+id/pc_btn"
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintEnd_toStartOf="@id/rc"
+                                app:layout_constraintStart_toEndOf="@id/gc"
+                                app:layout_constraintTop_toBottomOf="@id/r" />
+
+                            <Button
+                                android:id="@+id/rc_btn"
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="11dp"
+                                android:layout_marginTop="98dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/pc_btn"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <Button
+                                android:id="@+id/gc_btn"
+                                android:layout_width="64dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="2dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintEnd_toStartOf="@id/pc"
+                                app:layout_constraintStart_toEndOf="@id/brc"
+                                app:layout_constraintTop_toBottomOf="@id/p" />
+
+                            <Button
+                                android:id="@+id/bl_btn"
+                                android:layout_width="39dp"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="70dp"
+                                android:layout_marginBottom="2dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintBottom_toTopOf="@id/blc"
+                                app:layout_constraintEnd_toStartOf="@+id/bl"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                            <Button
+                                android:id="@+id/g_btn"
+                                android:layout_width="39dp"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="55dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="1dp"
+                                android:layout_marginBottom="2dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintBottom_toTopOf="@+id/brc"
+                                app:layout_constraintEnd_toStartOf="@+id/g"
+                                app:layout_constraintStart_toEndOf="@id/br_btn"
+                                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                            <Button
+                                android:id="@+id/r_btn"
+                                android:layout_width="39dp"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="18dp"
+                                android:layout_marginTop="35dp"
+                                android:layout_marginBottom="2dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintBottom_toTopOf="@+id/pc"
+                                app:layout_constraintStart_toEndOf="@id/p"
+                                app:layout_constraintTop_toTopOf="@id/textView17" />
+
+                            <Button
+                                android:id="@+id/p_btn"
+                                android:layout_width="39dp"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="36dp"
+                                android:layout_marginEnd="18dp"
+                                android:layout_marginBottom="1dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintBottom_toTopOf="@+id/gc"
+                                app:layout_constraintEnd_toStartOf="@+id/r"
+                                app:layout_constraintStart_toEndOf="@id/g"
+                                app:layout_constraintTop_toTopOf="@id/textView17" />
+
+                            <Button
+                                android:id="@+id/br_btn"
+                                android:layout_width="39dp"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="1dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="1dp"
+                                android:layout_marginBottom="2dp"
+                                android:background="#00FFFFFF"
+                                app:layout_constraintBottom_toTopOf="@+id/brc"
+                                app:layout_constraintEnd_toStartOf="@id/g"
+                                app:layout_constraintStart_toEndOf="@id/bl"
+                                app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="81dp">
+                            android:layout_height="89dp"
+                            tools:layout_editor_absoluteY="1dp">
 
-                            <Button
-                                android:id="@+id/yes_btn"
+                            <TextView
+                                android:id="@+id/textView18"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="1dp"
-                                android:layout_marginRight="1dp"
-                                android:text="@string/yes"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/no_btn"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/add_reminder_q"
+                                android:textSize="24sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="MissingConstraints" />
 
-                            <Button
-                                android:id="@+id/no_btn"
+                            <Switch
+                                android:id="@+id/switch1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="3dp"
-                                android:layout_marginRight="3dp"
-                                android:text="@string/no"
-                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginTop="21dp"
+                                android:layout_marginEnd="34dp"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/yes_btn"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:ignore="MissingConstraints" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <LinearLayout
                             android:id="@+id/reminder"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="450dp"
                             android:orientation="vertical"
                             android:visibility="gone">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:visibility="visible">
+                                android:visibility="visible"
+                                app:layout_constraintEnd_toStartOf="@+id/textView20"
+                                app:layout_constraintStart_toStartOf="@+id/textView20">
 
                                 <TextView
                                     android:id="@+id/textView20"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="37dp"
-                                    android:layout_marginLeft="37dp"
-                                    android:layout_marginTop="15dp"
-                                    android:layout_marginBottom="23dp"
+                                    android:layout_marginStart="9dp"
+                                    android:layout_marginBottom="9dp"
                                     android:text="@string/date_title"
                                     android:textSize="24sp"
                                     app:layout_constraintBottom_toTopOf="@+id/editText5"
-                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintStart_toStartOf="@+id/editText5"
                                     app:layout_constraintTop_toTopOf="parent"
                                     tools:ignore="MissingConstraints" />
 
@@ -274,28 +526,38 @@
                                     android:id="@+id/textView21"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="37dp"
-                                    android:layout_marginLeft="37dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginBottom="22dp"
                                     android:text="@string/notes"
                                     android:textSize="24sp"
                                     app:layout_constraintBottom_toTopOf="@+id/editText6"
+                                    app:layout_constraintStart_toStartOf="@+id/editText6"
+                                    app:layout_constraintTop_toBottomOf="@+id/editText4"
+                                    tools:ignore="MissingConstraints" />
+
+                                <TextView
+                                    android:id="@+id/textView26"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="36dp"
+                                    android:layout_marginBottom="31dp"
+                                    android:text="@string/time_title"
+                                    android:textSize="24sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/editText4"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/editText5"
                                     tools:ignore="MissingConstraints" />
 
                                 <EditText
                                     android:id="@+id/editText5"
-                                    android:layout_width="350dp"
-                                    android:layout_height="80dp"
-                                    android:layout_marginStart="37dp"
-                                    android:layout_marginLeft="37dp"
-                                    android:layout_marginEnd="37dp"
-                                    android:layout_marginRight="37dp"
-                                    android:layout_marginBottom="33dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="27dp"
+                                    android:layout_marginEnd="27dp"
+                                    android:layout_marginBottom="30dp"
                                     android:ems="10"
                                     android:inputType="date"
-                                    app:layout_constraintBottom_toTopOf="@+id/textView21"
+                                    app:layout_constraintBottom_toTopOf="@+id/textView26"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView20"
@@ -303,12 +565,11 @@
 
                                 <EditText
                                     android:id="@+id/editText6"
-                                    android:layout_width="350dp"
-                                    android:layout_height="80dp"
-                                    android:layout_marginStart="38dp"
-                                    android:layout_marginLeft="38dp"
-                                    android:layout_marginEnd="38dp"
-                                    android:layout_marginRight="38dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="26dp"
+                                    android:layout_marginEnd="26dp"
+                                    android:layout_marginBottom="14dp"
                                     android:ems="10"
                                     android:gravity="start|top"
                                     android:inputType="textMultiLine"
@@ -317,22 +578,34 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView21"
                                     tools:ignore="MissingConstraints" />
+
+                                <EditText
+                                    android:id="@+id/editText4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginStart="26dp"
+                                    android:layout_marginEnd="26dp"
+                                    android:layout_marginBottom="24dp"
+                                    android:ems="10"
+                                    android:inputType="time"
+                                    app:layout_constraintBottom_toTopOf="@+id/textView21"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </LinearLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="150dp">
 
                             <Button
                                 android:id="@+id/add_med"
                                 android:layout_width="80dp"
-                                android:layout_height="0dp"
+                                android:layout_height="80dp"
                                 android:layout_marginStart="24dp"
-                                android:layout_marginLeft="24dp"
                                 android:layout_marginEnd="24dp"
-                                android:layout_marginRight="24dp"
                                 android:background="@drawable/circle_button"
                                 android:text="@string/plus_btn_txt"
                                 android:textColor="#FFFFFF"
