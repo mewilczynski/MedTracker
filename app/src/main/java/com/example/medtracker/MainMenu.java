@@ -1,5 +1,6 @@
 package com.example.medtracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -9,25 +10,42 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.ArrayList;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Vector;
 
 public class MainMenu extends AppCompatActivity  {
     private FirebaseFirestore steps_firebase;
+    private Query m2Query;
     Date date;
+    private static final String NUMBER = "number";
+    private static final String DATE = "date";
+    private static final String UID = "uid";
+    String[] values;
+    String[] days_array;
+    Vector<String> list = new Vector<>();
+    Vector<String> days = new Vector<>();
     String sdate;
     TextView txtSteps;
     TextView txtDate;
+    String single_day;
     SensorManager sensorManager;
-    public boolean running = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,10 +59,11 @@ public class MainMenu extends AppCompatActivity  {
 
 
         steps_firebase = FirebaseFirestore.getInstance();
+        m2Query = steps_firebase.collection("steps");
         txtSteps = (TextView) findViewById(R.id.steps_textview);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         getSteps();
-
+        retrieveSteps();
 
         //buttons
         Button button = (Button) findViewById(R.id.to_medications_btn);
@@ -105,7 +124,12 @@ public class MainMenu extends AppCompatActivity  {
         menu_steps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                values = list.toArray(new String[list.size()]);
+                days_array = days.toArray(new String[days.size()]);
                 Intent intent = new Intent(getApplicationContext(), StepsActivity.class);
+
+                intent.putExtra("days", days_array);
+                intent.putExtra("list",values);
 
                 startActivity(intent);
             }
@@ -128,15 +152,15 @@ public class MainMenu extends AppCompatActivity  {
 
     public class Step {
 
-        public int number;
+        public String number;
         public String date;
-        public int uid;
+        public String uid;
 
         public Step() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public Step(int number, String date, int uid) {
+        public Step(String number, String date, String uid) {
             this.number = number;
             this.date = date;
             this.uid = uid;
@@ -169,7 +193,7 @@ public class MainMenu extends AppCompatActivity  {
                     txtSteps.setText(stepCount.toString() + " steps");
                     //send steps to database
                     CollectionReference step_db = steps_firebase.collection("steps");
-                    Step newStep = new Step(stepCount, sdate, 0);
+                    Step newStep = new Step(Integer.toString(stepCount), sdate, "0");
                     step_db.document(Integer.toString(0)).set(newStep);
                 }
             }
@@ -181,7 +205,26 @@ public class MainMenu extends AppCompatActivity  {
         };
         sensorManager.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
+    protected void retrieveSteps(){
 
+        m2Query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot doc : task.getResult()) {
+                        if(doc.getString(UID).equals("0")){ //if it's the desired uid
+                            //temporarily looking through uid 0
+                            list.add(doc.getString(NUMBER));
+                            single_day = Character.toString(doc.getString(DATE).charAt(3)) + Character.toString(doc.getString(DATE).charAt(4));
+                            days.add(single_day);
+
+                        }
+                    }
+                }
+            }
+        });
+
+    }
     @Override
     public void onResume() {
         super.onResume();

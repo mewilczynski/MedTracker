@@ -1,5 +1,6 @@
 package com.example.medtracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.hardware.Sensor;
@@ -8,42 +9,79 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 
-public class StepsActivity extends AppCompatActivity {
-    private double magPrev = 0;
-    private  Integer stepCount = 0;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import java.util.Vector;
+import java.util.List;
+import java.util.ArrayList;
+import android.util.Log;
 
+public class StepsActivity extends AppCompatActivity {
+    private LineGraphSeries<DataPoint> series;
+    int order = 0;
+    private FirebaseFirestore mDatabase ;
+    private Query m1Query;
+
+    private static final String NUMBER = "number";
+    private static final String DATE = "date";
+    Vector<Integer> dates_v = new Vector<>();
+    final String TAG = "STEPS ACTIVITY";
+    String[] val;
+    String[] dates;
+
+    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseFirestore.getInstance();
+        m1Query = mDatabase.collection("steps");
+        for(int o = 0; o<32; o++){
+            dates_v.add(0);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steps);
 
-        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor sensor= sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            val = bundle.getStringArray("list");
+            dates = bundle.getStringArray("days");
+        }
+        Log.e(TAG,Integer.toString(val.length) +"gathered the list");
+        for(int y = 0 ; y<val.length; y++){
+            dates_v.set(Integer.parseInt(dates[y]), Integer.parseInt(val[y]));
+        }
 
-        SensorEventListener stepDetector = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-                if(event != null){
-                    float x_accel = event.values[0];
-                    float y_accel = event.values[1];
-                    float z_accel = event.values[2];
 
-                    double magnitude = Math.sqrt(x_accel*x_accel + y_accel*y_accel + z_accel*z_accel);
-                    double magnitudeDelta = magnitude - magPrev;
-                    magPrev = magnitude;
+        GraphView graph = (GraphView) findViewById(R.id.steps_graph);
 
-                    if(magnitudeDelta > 6){
-                        stepCount++;
-                    }
-                    //set textview here to update
+        GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
+        gridLabelRenderer.setHorizontalAxisTitle("Days");
+        gridLabelRenderer.setVerticalAxisTitle("Steps");
 
-                }
-            }
+        int x, y;
+        x = 0;
+        y = 0;
+        series = new LineGraphSeries<>();
+        int num_days = 31;
+        for(int i = 1; i<= num_days ; i++){
+            x = x+1;
+            y = dates_v.elementAt(i);
+            series.appendData(new DataPoint(x,y), true, 100);
+        }
+        graph.addSeries(series);
+    }
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    public void onResume(){
+        super.onResume();
 
-            }
-        };
     }
 }
