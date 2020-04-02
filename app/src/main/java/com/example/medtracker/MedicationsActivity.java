@@ -8,6 +8,9 @@ import androidx.core.widget.NestedScrollView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -214,5 +217,36 @@ public class MedicationsActivity extends AppCompatActivity {
         NestedScrollView mScrollView = (NestedScrollView) findViewById(R.id.scroll);
         mScrollView.setVisibility(View.GONE);
         mScrollView.setVisibility(View.VISIBLE);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.game_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(intent);
+                return true;
+            case R.id.item2:
+                Intent intent2 = new Intent(getApplicationContext(), MedicationsActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.item3:
+                Intent intent3 = new Intent(getApplicationContext(), SymptomsActivity.class);
+                startActivity(intent3);
+                return true;
+            case R.id.item4:
+                Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
+                startActivity(intent4);
+                return true;
+            default:
+                return true;
+        }
     }
 }

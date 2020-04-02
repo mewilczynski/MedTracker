@@ -3,6 +3,7 @@ package com.example.medtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -11,6 +12,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -52,6 +56,8 @@ public class MainMenu extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+
+
         date = new Date();
         sdate = new SimpleDateFormat("MM-dd-yyyy").format(date);
         txtDate = (TextView) findViewById(R.id.date_textview);
@@ -91,60 +97,6 @@ public class MainMenu extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddSymptomsActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button menu_btn = (Button) findViewById(R.id.menu);
-        final LinearLayout dropdown = (LinearLayout) findViewById(R.id.menu_dropdown);
-
-        menu_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(dropdown.getVisibility()==View.GONE){
-                    dropdown.setVisibility(View.VISIBLE);
-                }else{
-                    dropdown.setVisibility(View.GONE);
-                }
-
-            }
-        });
-
-        Button menu_notes = (Button) findViewById(R.id.menu_add_med_btn);
-        Button menu_sym = (Button) findViewById(R.id.menu_sym_btn);
-        Button menu_med = (Button) findViewById(R.id.menu_med_btn);
-        Button menu_steps = (Button) findViewById(R.id.menu_steps_btn);
-
-        menu_med.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MedicationsActivity.class);
-                startActivity(intent);
-            }
-        });
-        menu_steps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                values = list.toArray(new String[list.size()]);
-                days_array = days.toArray(new String[days.size()]);
-                Intent intent = new Intent(getApplicationContext(), StepsActivity.class);
-
-                intent.putExtra("days", days_array);
-                intent.putExtra("list",values);
-
-                startActivity(intent);
-            }
-        });
-        menu_sym.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
-                startActivity(intent);
-            }
-        });
-        menu_notes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent);
             }
         });
@@ -231,6 +183,38 @@ public class MainMenu extends AppCompatActivity  {
         txtSteps.setText(stepCount.toString());
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.game_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(intent);
+                return true;
+            case R.id.item2:
+                Intent intent2 = new Intent(getApplicationContext(), MedicationsActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.item3:
+                Intent intent3 = new Intent(getApplicationContext(), SymptomsActivity.class);
+                startActivity(intent3);
+
+                return true;
+            case R.id.item4:
+                Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
+                startActivity(intent4);
+
+                return true;
+            default:
+                return true;
+        }
+    }
 
 }

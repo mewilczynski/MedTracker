@@ -44,7 +44,7 @@
     <string name="note1">- Doctor said to rest.</string>
     <string name="note2">- Worked out...</string>
     <string name="add_note_title">Add Notes</string>
-    <string name="date_for_notes">Date (MMDDYYYY)</string>
+    <string name="date_for_notes">Date</string>
     <string name="dosage_title">Dosage (in mg)</string>
     <string name="time_title">Time</string>
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu"
+        android:title="Menu"
+        android:icon="@drawable/settings"
+        app:showAsAction="ifRoom" >
+
+        <menu>
+            <item android:id="@+id/item1"
+                android:title="Main Menu"
+                app:showAsAction="never"/>
+            <item android:id="@+id/item2"
+                android:title="@string/medications_title"
+                app:showAsAction="never"/>
+            <item android:id="@+id/item3"
+                android:title="@string/symptoms_title"
+                app:showAsAction="never"/>
+            <item android:id="@+id/item4"
+                android:title="@string/steps_btn_txt"
+                app:showAsAction="never"/>
+        </menu>
+
+    </item>
+
+
+
+
+
+</menu>
