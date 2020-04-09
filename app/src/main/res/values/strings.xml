@@ -47,5 +47,7 @@
     <string name="date_for_notes">Date</string>
     <string name="dosage_title">Dosage (in mg)</string>
     <string name="time_title">Time</string>
+    <string name="x_button">x</string>
+    <string name="check_button">√</string>
 
 </resources>
