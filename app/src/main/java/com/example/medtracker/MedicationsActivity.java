@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.IOException;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,18 +62,47 @@ public class MedicationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medications);
 
+
+/*
+        Thread thread2 = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+
+                        Thread.sleep(500);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                //populateList();
+
+
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        thread2.start();
+*/
+
         LinearLayout layout11 = (LinearLayout) findViewById(R.id.linearLayouta3);
         layout11.setVisibility(View.GONE);
         LinearLayout layout1 = (LinearLayout) findViewById(R.id.linearLayout3);
         layout11.setVisibility(View.VISIBLE);
 
 
-        resetRemovebuttons();
+        //resetRemovebuttons();
 
         final Button remove = (Button) findViewById(R.id.add_med2); //remove button
 
         final Drawable blueCir = getResources().getDrawable(R.drawable.circle_button);
         final Drawable greenCir = getResources().getDrawable(R.drawable.circle_button_green);
+
 
         for(int i = 0; i<10;i++){
             String SLid = "med"+ Integer.toString(i+1);
@@ -148,6 +179,7 @@ public class MedicationsActivity extends AppCompatActivity {
             }
         });
 
+
         //all remove buttons
         Button r1 = (Button) findViewById(R.id.med1x1);
         Button r2 = (Button) findViewById(R.id.med1x2);
@@ -177,6 +209,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(0)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -186,6 +219,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(1)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -195,6 +229,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(2)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -204,6 +239,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(3)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -213,6 +249,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(4)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -222,6 +259,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(5)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -231,6 +269,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(6)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -240,6 +279,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(7)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -249,6 +289,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(8)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -258,6 +299,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(medIds.elementAt(9)).delete();
                 }
+                resetList();
                 populateList();
             }
         });
@@ -267,6 +309,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(0)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -276,6 +319,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(1)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -285,6 +329,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(2)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -294,6 +339,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(3)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -303,6 +349,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(4)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -312,6 +359,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(5)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -321,6 +369,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(6)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -330,6 +379,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(7)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -339,6 +389,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(8)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -348,6 +399,7 @@ public class MedicationsActivity extends AppCompatActivity {
                 if(!medIds.isEmpty()){
                     mDatabase.collection("medications").document(searchmedIds.elementAt(9)).delete();
                 }
+                resetList();
                 populateSearchList();
             }
         });
@@ -501,6 +553,22 @@ public class MedicationsActivity extends AppCompatActivity {
                 }
 
             }
+        }
+    }
+    private void resetList(){
+        for(int i = 0; i<10;i++){
+            String SLid = "med"+ Integer.toString(i+1);
+            int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
+            ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
+            layout.setVisibility(View.GONE);
+
+        }
+        for(int i = 0; i<10;i++){
+            String SLid = "meda"+ Integer.toString(i+1);
+            int Lid = getResources().getIdentifier(SLid,"id", getPackageName());
+            ConstraintLayout layout = (ConstraintLayout) findViewById(Lid);
+            layout.setVisibility(View.GONE);
+
         }
     }
     private void resetRemovebuttons(){
