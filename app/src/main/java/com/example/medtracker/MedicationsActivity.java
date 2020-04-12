@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.io.IOException;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -178,7 +179,6 @@ public class MedicationsActivity extends AppCompatActivity {
                 popRemovebuttons();
             }
         });
-
 
         //all remove buttons
         Button r1 = (Button) findViewById(R.id.med1x1);
@@ -635,9 +635,26 @@ public class MedicationsActivity extends AppCompatActivity {
                 Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent5);
 
+            case R.id.item6:
+                signOut();
+
                 return true;
             default:
                 return true;
         }
+    }
+
+    public void signOut(){
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>(){
+
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(MedicationsActivity.this, MainActivity.class));
+                        finish();
+
+                    }
+                });
     }
 }

@@ -50,8 +50,8 @@
         android:text="@string/enter_your_email"
         android:textColor="#888888"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/emailBox"
+        app:layout_constraintStart_toStartOf="@+id/emailBox"
         app:layout_constraintTop_toBottomOf="@+id/toolbar11"
         tools:ignore="MissingConstraints" />
 
@@ -63,9 +63,9 @@
         android:text="@string/enter_your_password"
         android:textColor="#888888"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/passwordBox"
+        app:layout_constraintStart_toStartOf="@+id/passwordBox"
+        app:layout_constraintTop_toBottomOf="@+id/emailBox"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -76,14 +76,14 @@
         android:text="@string/no_account"
         android:textColor="#888888"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/signup_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/emailBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="45dp"
@@ -100,7 +100,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passwordBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="45dp"
@@ -128,11 +128,11 @@
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signup_button"
         android:layout_width="141dp"
         android:layout_height="0dp"
         android:layout_marginBottom="80dp"
@@ -145,5 +145,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/emailErrorTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:textColor="#E8D52D2D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

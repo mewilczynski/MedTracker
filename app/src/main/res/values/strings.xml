@@ -49,5 +49,6 @@
     <string name="time_title">Time</string>
     <string name="x_button">x</string>
     <string name="check_button">√</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>
