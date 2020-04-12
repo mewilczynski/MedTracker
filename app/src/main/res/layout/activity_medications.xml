@@ -9,9 +9,10 @@
         android:id="@+id/toolbar9"
         android:layout_width="368dp"
         android:layout_height="10dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="5dp"
         android:background="#4566C8"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -25,23 +26,27 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
+        android:layout_marginStart="67dp"
         android:layout_marginTop="35dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="1dp"
         android:text="@string/medications_title"
         android:textColor="#4566C8"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/toolbar9"
-        app:layout_constraintStart_toStartOf="@+id/toolbar9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="339dp"
         android:layout_height="70dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/search_bar_rec"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
@@ -64,6 +69,9 @@
         android:id="@+id/add_med"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="165dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/circle_button"
         android:text="@string/plus_btn_txt"
@@ -75,14 +83,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
+    <Button
+        android:id="@+id/add_med2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="85dp"
+        android:background="@drawable/circle_button_red"
+        android:text="x"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_med"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:visibility="visible" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="371dp"
+        android:layout_height="390dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_med"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -115,14 +141,29 @@
                             android:id="@+id/medtxt1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginBottom="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="17dp"
+                            android:layout_marginEnd="180dp"
+                            android:layout_marginBottom="3dp"
                             android:text="@string/medv"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/med1x1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -137,6 +178,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt1" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -149,13 +191,15 @@
                             android:id="@+id/medtxt2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -173,6 +217,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt2" />
+
+                        <Button
+                            android:id="@+id/med1x2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -187,13 +246,15 @@
                             android:id="@+id/medtxt3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView3"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -203,7 +264,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -212,6 +273,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt3" />
 
+                        <Button
+                            android:id="@+id/med1x3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -219,19 +295,23 @@
                         android:id="@+id/med4"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/med1x4"
+                        app:layout_constraintTop_toBottomOf="@+id/med1x4"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxt4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView4"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -239,9 +319,9 @@
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="37dp"
-                            android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginEnd="54dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -249,6 +329,22 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt4"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt4" />
+
+                        <Button
+                            android:id="@+id/med1x4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/medtxt4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -263,13 +359,15 @@
                             android:id="@+id/medtxt5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -279,7 +377,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -287,6 +385,19 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt5" />
+
+                        <Button
+                            android:id="@+id/med1x5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -301,13 +412,15 @@
                             android:id="@+id/medtxt6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView6"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -317,7 +430,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -325,6 +438,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt6"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt6" />
+
+                        <Button
+                            android:id="@+id/med1x6"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -339,13 +467,15 @@
                             android:id="@+id/medtxt7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView7"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -355,7 +485,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -363,6 +493,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt7"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt7" />
+
+                        <Button
+                            android:id="@+id/med1x7"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -377,13 +522,15 @@
                             android:id="@+id/medtxt8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView8"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -393,7 +540,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -401,6 +548,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt8"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt8" />
+
+                        <Button
+                            android:id="@+id/med1x8"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -415,13 +577,15 @@
                             android:id="@+id/medtxt9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView9"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -431,7 +595,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -439,6 +603,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt9"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt9" />
+
+                        <Button
+                            android:id="@+id/med1x9"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -453,13 +632,15 @@
                             android:id="@+id/medtxt10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView10"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -469,7 +650,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -477,6 +658,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxt10"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxt10" />
+
+                        <Button
+                            android:id="@+id/med1x10"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -492,7 +688,6 @@
             android:layout_width="363dp"
             android:layout_height="427dp"
             android:orientation="vertical"
-            android:visibility="gone"
             tools:visibility="gone">
 
             <androidx.core.widget.NestedScrollView
@@ -504,10 +699,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/colorBackground"
-                    android:orientation="vertical"
-                    android:visibility="visible"
-                    tools:visibility="visible">
+                    android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/meda1"
@@ -520,14 +712,31 @@
                             android:id="@+id/medtxta1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginBottom="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="17dp"
+                            android:layout_marginEnd="180dp"
+                            android:layout_marginBottom="3dp"
                             android:text="@string/medv"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/med1xa1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -542,26 +751,28 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta1" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/meda2"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa2"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -571,7 +782,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -580,6 +791,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta2" />
 
+                        <Button
+                            android:id="@+id/med1xa2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -587,20 +813,21 @@
                         android:id="@+id/meda3"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa3"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -610,7 +837,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -619,6 +846,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta3" />
 
+                        <Button
+                            android:id="@+id/med1xa3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -626,20 +868,23 @@
                         android:id="@+id/meda4"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/med1xa4"
+                        app:layout_constraintTop_toBottomOf="@+id/med1xa4"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa4"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -649,7 +894,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -658,6 +903,23 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta4" />
 
+                        <Button
+                            android:id="@+id/med1xa4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/medtxta4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -665,20 +927,23 @@
                         android:id="@+id/meda5"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/med1xa5"
+                        app:layout_constraintTop_toBottomOf="@+id/med1xa5"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa5"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -688,7 +953,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -697,6 +962,22 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta5" />
 
+                        <Button
+                            android:id="@+id/med1xa5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/medtxta5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -704,20 +985,21 @@
                         android:id="@+id/meda6"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa6"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -727,7 +1009,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -736,6 +1018,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta6" />
 
+                        <Button
+                            android:id="@+id/med1xa6"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -743,20 +1040,21 @@
                         android:id="@+id/meda7"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa7"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -766,7 +1064,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -775,6 +1073,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta7" />
 
+                        <Button
+                            android:id="@+id/med1xa7"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -782,20 +1095,21 @@
                         android:id="@+id/meda8"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa8"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -805,7 +1119,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -814,6 +1128,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta8" />
 
+                        <Button
+                            android:id="@+id/med1xa8"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -821,20 +1150,21 @@
                         android:id="@+id/meda9"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa9"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -844,7 +1174,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -853,6 +1183,21 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta9" />
 
+                        <Button
+                            android:id="@+id/med1xa9"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -860,20 +1205,21 @@
                         android:id="@+id/meda10"
                         android:layout_width="match_parent"
                         android:layout_height="104dp"
-                        android:visibility="gone"
                         tools:visibility="gone">
 
                         <TextView
                             android:id="@+id/medtxta10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="180dp"
                             android:text="@string/medy"
                             android:textColor="#4566C8"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textViewa10"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -883,7 +1229,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="37dp"
                             android:layout_marginEnd="52dp"
-                            android:layout_marginBottom="3dp"
+                            android:layout_marginBottom="5dp"
                             android:text="@string/medy_status"
                             android:textColor="#4566C8"
                             android:textSize="18sp"
@@ -891,6 +1237,21 @@
                             app:layout_constraintEnd_toEndOf="@+id/medtxta10"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/medtxta10" />
+
+                        <Button
+                            android:id="@+id/med1xa10"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="310dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="59dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_red"
+                            android:text="x"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

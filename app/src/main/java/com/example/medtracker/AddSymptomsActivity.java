@@ -90,6 +90,11 @@ public class AddSymptomsActivity extends AppCompatActivity {
                 Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
                 startActivity(intent4);
                 return true;
+            case R.id.item5:
+                Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
+                startActivity(intent5);
+
+                return true;
             default:
                 return true;
         }
