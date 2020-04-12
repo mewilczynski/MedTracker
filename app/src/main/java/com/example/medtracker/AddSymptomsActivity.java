@@ -14,11 +14,23 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
 import java.util.Calendar;
 
 public class AddSymptomsActivity extends AppCompatActivity {
 
     DatePickerDialog picker;
+
+    private FirebaseFirestore symp_firebase;
+    private Query mQuery;
+    private static int symp_id = 0;
+    //private static final String SYMPTOM = "symptom";
+    //private static final String DATE = "date";
+   // private static final String UID = "uid";
+    public static int uid = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +62,50 @@ public class AddSymptomsActivity extends AppCompatActivity {
             }
         });
 
+        symp_firebase = FirebaseFirestore.getInstance();
+        //mQuery = symp_firebase.collection("symptoms");
+
+        //call on function to add symptoms
+
 
         Button button = (Button) findViewById(R.id.add_sym_btn_sym);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                newSymptom();
                 Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
                 startActivity(intent);
             }
         });
 
 
+
+    }
+    public class Symptom{
+        public String symptom;
+        public String date;
+        public int uid;
+
+        public Symptom(){
+
+        }
+
+        public Symptom(String symptom, String date, int uid){
+            this.symptom = symptom;
+            this.date = date;
+            this.uid = uid;
+        }
+    }
+
+    protected void newSymptom(){
+        CollectionReference symp = symp_firebase.collection("symptoms");
+        EditText editSymptom = (EditText) findViewById(R.id.editText8);
+        String symptom = editSymptom.getText().toString();
+        EditText datepicker2 = (EditText) findViewById(R.id.editText3);
+        String date = datepicker2.getText().toString();
+
+        Symptom newSymptom = new Symptom(symptom, date, uid);
+        symp.document(Integer.toString(uid)+ "-"+Integer.toString(symp_id)).set(newSymptom);
 
     }
     @Override

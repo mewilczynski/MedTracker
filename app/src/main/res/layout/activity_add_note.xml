@@ -33,48 +33,68 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="88dp"
         android:text="@string/add_note_title"
         android:textColor="#4566C8"
         android:textSize="50sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="332dp"
+        android:layout_marginBottom="545dp"
         android:text="@string/date_for_notes"
         android:textSize="24dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="154dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="312dp"
         android:text="@string/notes"
         android:textSize="24dp"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editDateText"
         android:layout_width="353dp"
         android:layout_height="68dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="29dp"
         android:ems="10"
         android:inputType="date"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="200dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editNoteText"
         android:layout_width="351dp"
         android:layout_height="68dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="349dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="349dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
