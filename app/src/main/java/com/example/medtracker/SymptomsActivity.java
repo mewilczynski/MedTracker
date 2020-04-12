@@ -15,7 +15,13 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class SymptomsActivity extends AppCompatActivity {
+
+    private FirebaseFirestore mDatabase ;
+    private static final String NOTE = "note";
+    private static final String DATE = "today";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +33,11 @@ public class SymptomsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddSymptomsActivity.class);
-                startActivity(intent);
+                startActivity(intent); //launch addSymptoms activity
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
