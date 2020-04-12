@@ -219,6 +219,11 @@ public class MainMenu extends AppCompatActivity  {
                 startActivity(intent4);
 
                 return true;
+            case R.id.item5:
+                Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
+                startActivity(intent5);
+
+                return true;
             default:
                 return true;
         }
