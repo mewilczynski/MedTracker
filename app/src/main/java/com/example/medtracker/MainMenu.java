@@ -145,8 +145,8 @@ public class MainMenu extends AppCompatActivity  {
                     txtSteps.setText(stepCount.toString() + " steps");
                     //send steps to database
                     CollectionReference step_db = steps_firebase.collection("steps");
-                    Step newStep = new Step(Integer.toString(stepCount), sdate, "0");
-                    step_db.document(Integer.toString(0)).set(newStep);
+                    Step newStep = new Step(Integer.toString(stepCount), sdate, "1");
+                    step_db.document(Integer.toString(1)).set(newStep);
                 }
             }
 
@@ -208,7 +208,14 @@ public class MainMenu extends AppCompatActivity  {
 
                 return true;
             case R.id.item4:
+                //Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
+                values = list.toArray(new String[list.size()]);
+                days_array = days.toArray(new String[days.size()]);
                 Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
+
+                intent4.putExtra("days", days_array);
+                intent4.putExtra("list",values);
+
                 startActivity(intent4);
 
                 return true;
