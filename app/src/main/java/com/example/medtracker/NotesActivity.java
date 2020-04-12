@@ -1,7 +1,6 @@
 package com.example.medtracker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,20 +14,15 @@ import android.widget.TextView;
 
 //import com.google.firebase.firestore.DocumentReference;
 //import com.google.firebase.firestore.FirebaseFirestore;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.DocumentReference;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class NotesActivity extends AppCompatActivity {
    // private NoteClass note1;
@@ -159,9 +153,26 @@ public class NotesActivity extends AppCompatActivity {
                 Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent5);
 
+            case R.id.item6:
+                signOut();
+
                 return true;
             default:
                 return true;
         }
+    }
+
+    public void signOut(){
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>(){
+
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(NotesActivity.this, MainActivity.class));
+                        finish();
+
+                    }
+                });
     }
 }

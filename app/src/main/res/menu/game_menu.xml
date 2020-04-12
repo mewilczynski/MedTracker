@@ -23,6 +23,10 @@
             <item android:id="@+id/item5"
                 android:title="@string/notes_title"
                 app:showAsAction="never"/>
+            <item
+                android:id="@+id/item6"
+                android:title="@string/sign_out"
+                app:showAsAction="never" />
         </menu>
 
     </item>

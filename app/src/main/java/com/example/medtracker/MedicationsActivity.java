@@ -17,23 +17,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 public class MedicationsActivity extends AppCompatActivity {
@@ -567,9 +558,26 @@ public class MedicationsActivity extends AppCompatActivity {
                 Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent5);
 
+            case R.id.item6:
+                signOut();
+
                 return true;
             default:
                 return true;
         }
+    }
+
+    public void signOut(){
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>(){
+
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(MedicationsActivity.this, MainActivity.class));
+                        finish();
+
+                    }
+                });
     }
 }
