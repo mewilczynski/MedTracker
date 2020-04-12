@@ -2,16 +2,36 @@ package com.example.medtracker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlarmManager;
+import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.InputType;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TimePicker;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,14 +42,21 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.app.Notification.EXTRA_NOTIFICATION_ID;
 
 public class AddMedActivity extends AppCompatActivity {
 
     private FirebaseFirestore mDatabase;
     private String color;
-
+    private boolean reminder = false;
+    DatePickerDialog picker;
+    TimePickerDialog pickerTime;
+    private String reminderTime;
+    private String reminderDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +103,10 @@ public class AddMedActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     reminder_layout.setVisibility(View.VISIBLE);
+                    reminder = true;
                 }else{
                     reminder_layout.setVisibility(View.GONE);
+                    reminder = false;
                 }
             }
         });
@@ -88,7 +117,7 @@ public class AddMedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveMed();
-                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                Intent intent = new Intent(getApplicationContext(), MedicationsActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,6 +139,8 @@ public class AddMedActivity extends AppCompatActivity {
                 gc.setImageResource(R.drawable.greyc);
                 pc.setImageResource(R.drawable.greyc);
                 rc.setImageResource(R.drawable.greyc);
+               // setAlarm();
+                createNotificationChannel();
             }
         });
         brown_btn.setOnClickListener(new View.OnClickListener() {
@@ -266,6 +297,86 @@ public class AddMedActivity extends AppCompatActivity {
             }
         });
 
+        final Calendar cldr = Calendar.getInstance();
+        final EditText datepicker = (EditText) findViewById(R.id.editText5);
+
+        datepicker.setInputType(InputType.TYPE_NULL);
+        datepicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(AddMedActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                String date = (monthOfYear + 1) + "/" + dayOfMonth  +  "/" + year;
+                                datepicker.setText(date);
+                                reminderDate = date;
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+        final EditText timepicker = (EditText) findViewById(R.id.editText4);
+
+
+        timepicker.setInputType(InputType.TYPE_NULL);
+        timepicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                pickerTime = new TimePickerDialog(AddMedActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                if(sHour>12){
+                                    if(sMinute<10){
+
+                                        String Time = (sHour-12) + ":0"+sMinute + " PM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }else{
+                                        String Time = (sHour-12) + ":"+sMinute + " PM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }
+                                }else if(sHour==12){
+                                    if(sMinute<10){
+
+                                        String Time = (sHour) + ":0"+sMinute + " PM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }else{
+                                        String Time = (sHour) + ":"+sMinute + " PM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }
+                                }
+                                else{
+                                    if(sMinute<10){
+                                        String Time = sHour + ":0"+sMinute + " AM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }else{
+                                        String Time = sHour + ":"+sMinute + " AM";
+                                        timepicker.setText(Time);
+                                        reminderTime = Time;
+                                    }
+                                }
+
+
+                            }
+                        }, hour, minutes, false);
+                pickerTime.show();
+            }
+        });
 
     }
 
@@ -306,22 +417,111 @@ public class AddMedActivity extends AppCompatActivity {
         String name = editTxtName.getText().toString();
         EditText editTxtDos = (EditText) findViewById(R.id.editTextDos);
         String dosage = editTxtDos.getText().toString();
-/*
-        Map<String, Object> med = new HashMap<>();
-        med.put("type",type);
-        med.put("name",name);
-        med.put("color", color);
-        med.put("shape", shape);
-*/
+
+        if(reminder){
+
+        }
+
         Med med = new Med(type,name,color,dosage);
         String uid = type+name;
         medications.document(uid).set(med);
 
     }
 
+
+    private void setAlarm(){
+        boolean alarm = (PendingIntent.getBroadcast(this, 0, new Intent("ALARM"), PendingIntent.FLAG_NO_CREATE) == null);
+
+        if(alarm){
+            Intent itAlarm = new Intent("ALARM");
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,itAlarm,0);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.add(Calendar.SECOND, 3);
+            AlarmManager alarme = (AlarmManager) getSystemService(ALARM_SERVICE);
+            alarme.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),60000, pendingIntent);
+        }
+    }
+
+    private void sendNoti(){
+        Intent snoozeIntent = new Intent(this, AddMedActivity.class);
+        //snoozeIntent.setAction();
+        snoozeIntent.putExtra(EXTRA_NOTIFICATION_ID, 0);
+        PendingIntent snoozePendingIntent =
+                PendingIntent.getBroadcast(this, 0, snoozeIntent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "50")
+                .setSmallIcon(R.drawable.yellow)
+                .setContentTitle("Medication Reminder")
+                .setContentText("Take your damn medication")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("Take your damn medication"))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                 .addAction(R.drawable.rounded_corners, "Snooze",
+                snoozePendingIntent)
+                .addAction(R.drawable.rounded_corners, "Confirm",
+                        snoozePendingIntent);
+
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+// notificationId is a unique int for each notification that you must define
+        notificationManager.notify(0, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "getString(R.string.channel_name);";
+            String description = "getString(R.string.channel_description)";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("50", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+        sendNoti();
+    }
     @Override
     public void onResume(){
         super.onResume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.game_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(intent);
+                return true;
+            case R.id.item2:
+                Intent intent2 = new Intent(getApplicationContext(), MedicationsActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.item3:
+                Intent intent3 = new Intent(getApplicationContext(), SymptomsActivity.class);
+                startActivity(intent3);
+
+                return true;
+            case R.id.item4:
+                Intent intent4 = new Intent(getApplicationContext(), StepsActivity.class);
+                startActivity(intent4);
+
+                return true;
+            default:
+                return true;
+        }
     }
 
 }
