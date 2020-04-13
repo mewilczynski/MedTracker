@@ -2,6 +2,7 @@ package com.example.medtracker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,6 +31,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,13 +54,16 @@ public class MainMenu extends AppCompatActivity  {
     TextView txtDate;
     String single_day;
     SensorManager sensorManager;
+    private FirebaseFirestore mDatabase ;
+    private static final String TAG = "MainMenuActivity";
+    private int j = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        mDatabase = FirebaseFirestore.getInstance();
 
 
         date = new Date();
@@ -178,10 +185,47 @@ public class MainMenu extends AppCompatActivity  {
         });
 
     }
+
+    private void populateMed(){
+        final TextView rm1 = (TextView) findViewById(R.id.textView9);
+        final TextView rm2 = (TextView) findViewById(R.id.textView10);
+
+        rm1.setText("No reminders found");
+        rm2.setText(" ");
+
+        j = 1;
+        mDatabase.collection("medications").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Med med  = document.toObject(Med.class);
+                                if(med.getReminder()!=null){
+                                    if(j==1){
+                                        rm1.setText(med.getType()+" " + med.getName() +" " + med.getReminder().getDate() + " " + med.getReminder().getTime());
+                                    }
+                                    if(j==2){
+                                        rm2.setText(med.getType()+" " + med.getName() +" " + med.getReminder().getDate() + " " + med.getReminder().getTime());
+                                    }
+                                    j++;
+                                }
+
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+
     @Override
     public void onResume() {
         super.onResume();
         txtSteps.setText(stepCount.toString());
+        populateMed();
     }
 
     @Override
