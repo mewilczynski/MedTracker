@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -72,16 +73,20 @@ public class MainActivity extends AppCompatActivity {
         final EditText editEmail = (EditText) findViewById(R.id.emailBox);
         final EditText editPass = (EditText) findViewById(R.id.passwordBox);
 
+        final TextView errorTxt = (TextView) findViewById(R.id.ErrorTxt);
+
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = editEmail.getText().toString();
                 String pass = editPass.getText().toString();
                 if((email != null && !email.isEmpty()) || (pass != null && !pass.isEmpty())){
-                    signIn(email, pass);
+                    signIn(email, pass, errorTxt);
                 }
                 else{
-
+                    errorTxt.setVisibility(View.VISIBLE);
+                    String warning = "Please enter your email and password";
+                    errorTxt.setText(warning);
                 }
             }
         });
@@ -89,14 +94,13 @@ public class MainActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = editEmail.getText().toString();
-                String pass = editPass.getText().toString();
-                createUser(email, pass);
+                Intent intent = new Intent(MainActivity.this, AddNewUser.class);
+                startActivity(intent);
             }
         });
     }
 
-    protected void signIn(String email, String password){
+    protected void signIn(String email, String password, final TextView errorTxt){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -110,32 +114,15 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             // ...
+                            errorTxt.setVisibility(View.VISIBLE);
+                            String warning = "The email or password is incorrect";
+                            errorTxt.setText(warning);
                         }
 
                         // ...
                     }
                 });
 
-    }
-
-    protected void createUser(String email, String password){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //go to main menu
-                            startActivity(new Intent(MainActivity.this, MainMenu.class));
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                        }
-
-                        // ...
-                    }
-                });
     }
 
 }

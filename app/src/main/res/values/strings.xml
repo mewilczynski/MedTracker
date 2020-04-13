@@ -50,5 +50,12 @@
     <string name="x_button">x</string>
     <string name="check_button">√</string>
     <string name="sign_out">Sign Out</string>
-
+    <string name="title_activity_add_new_user">AddNewUser</string>
+    <string name="sign_up_header">Sign Up</string>
+    <string name="fname_hint">Enter your first name</string>
+    <string name="lname_hint">Enter your last name</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="password_hint">Enter a password</string>
+    <string name="reenterpass_hint">Reenter password</string>
+    <string name="birthday_hint">Enter your birthday</string>
 </resources>
