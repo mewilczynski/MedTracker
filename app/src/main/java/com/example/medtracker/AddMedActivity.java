@@ -42,6 +42,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +57,7 @@ public class AddMedActivity extends AppCompatActivity {
 
     private FirebaseFirestore mDatabase;
     private String color;
-    private boolean reminder = false;
+    private boolean reminderbool = false;
     DatePickerDialog picker;
     TimePickerDialog pickerTime;
     private String reminderTime;
@@ -103,10 +108,10 @@ public class AddMedActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     reminder_layout.setVisibility(View.VISIBLE);
-                    reminder = true;
+                    reminderbool = true;
                 }else{
                     reminder_layout.setVisibility(View.GONE);
-                    reminder = false;
+                    reminderbool = false;
                 }
             }
         });
@@ -140,7 +145,13 @@ public class AddMedActivity extends AppCompatActivity {
                 pc.setImageResource(R.drawable.greyc);
                 rc.setImageResource(R.drawable.greyc);
                // setAlarm();
-                createNotificationChannel();
+                //createNotificationChannel();
+                /*
+                try {
+                    writeDataInternal();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
             }
         });
         brown_btn.setOnClickListener(new View.OnClickListener() {
@@ -417,14 +428,21 @@ public class AddMedActivity extends AppCompatActivity {
         String name = editTxtName.getText().toString();
         EditText editTxtDos = (EditText) findViewById(R.id.editTextDos);
         String dosage = editTxtDos.getText().toString();
+        EditText datepicker = (EditText) findViewById(R.id.editText5);
+        EditText timepicker = (EditText) findViewById(R.id.editText4);
+        EditText note = (EditText) findViewById(R.id.editText6);
 
-        if(reminder){
+        reminder reminder = new reminder();
 
+        if(reminderbool){
+            reminder rm = new reminder(datepicker.getText().toString(),timepicker.getText().toString(),note.getText().toString());
+            reminder = rm;
         }
 
-        Med med = new Med(type,name,color,dosage);
+        Med med = new Med(type,name,color,dosage,reminder);
         String uid = type+name;
         medications.document(uid).set(med);
+
 
     }
 
@@ -485,6 +503,51 @@ public class AddMedActivity extends AppCompatActivity {
         }
         sendNoti();
     }
+
+    /*
+    private void writeDataInternal(Med med) throws IOException {
+
+        File path = getApplicationContext().getFilesDir();
+
+        File file = new File(path,"medications.txt");
+
+
+
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+
+        FileInputStream in = new FileInputStream(file);
+        try{
+            in.read(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            in.close();
+        }
+
+        String contents = new String(bytes);
+
+        StringBuilder str = new StringBuilder(contents);
+
+
+        FileOutputStream stream = new FileOutputStream(file);
+        try{
+            stream.write("testing please work".getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            stream.close();
+        }
+
+
+
+
+
+    }*/
+
+
+
+
     @Override
     public void onResume(){
         super.onResume();
