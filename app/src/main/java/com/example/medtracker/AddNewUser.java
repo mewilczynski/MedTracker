@@ -54,7 +54,7 @@ public class AddNewUser extends AppCompatActivity {
         final TextView errorTxt = (TextView) findViewById(R.id.ErrorTxt);
 
         final Calendar cldr = Calendar.getInstance();
-        final EditText datepicker = (EditText) findViewById(R.id.editDateText);
+        final EditText datepicker = (EditText) findViewById(R.id.birthday);
 
         datepicker.setInputType(InputType.TYPE_NULL);
         datepicker.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +89,7 @@ public class AddNewUser extends AppCompatActivity {
                 String lName = editlName.getText().toString();
                 String birthday = editBirthday.getText().toString();
                 String rPass = reenterPass.getText().toString();
-                if((email != null && !email.isEmpty()) || (pass != null && !pass.isEmpty()) || (fName != null && !fName.isEmpty()) || (lName != null && !lName.isEmpty())|| (birthday != null && !birthday.isEmpty()) || (rPass != null && !rPass.isEmpty())){
+                if((email != null && !email.isEmpty()) || (pass != null && !pass.isEmpty()) || (fName != null && !fName.isEmpty()) || (lName != null && !lName.isEmpty()) || (birthday != null && !birthday.isEmpty()) || (rPass != null && !rPass.isEmpty())){
                     AddNewUser.user newUser = new AddNewUser.user(fName, lName, birthday);
                     createUser(email, pass, errorTxt, newUser);
                 }

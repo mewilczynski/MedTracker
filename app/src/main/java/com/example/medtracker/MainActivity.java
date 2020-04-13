@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (auth.getCurrentUser() != null) {
-            // Already signed in
-            startActivity(new Intent(MainActivity.this, MainMenu.class));
-            finish();
-        } else {
-            //Not signed in
-        }
+//        if (auth.getCurrentUser() != null) {
+//            // Already signed in
+//            startActivity(new Intent(MainActivity.this, MainMenu.class));
+//            finish();
+//        } else {
+//            //Not signed in
+//        }
 
         final EditText editEmail = (EditText) findViewById(R.id.emailBox);
         final EditText editPass = (EditText) findViewById(R.id.passwordBox);
