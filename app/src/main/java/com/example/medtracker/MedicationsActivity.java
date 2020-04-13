@@ -464,8 +464,14 @@ public class MedicationsActivity extends AppCompatActivity {
                                     int stxt = getResources().getIdentifier(s,"id", getPackageName());
                                     TextView rem = (TextView) findViewById(stxt);
                                     if(med.getReminder()!=null){
-                                        String m2 = med.getReminder().getDate() + " " + med.getReminder().getTime();
-                                        rem.setText(m2);
+                                        if(med.getReminder().getDate()!=null){
+                                            String m2 = med.getReminder().getDate() + " " + med.getReminder().getTime();
+
+                                            rem.setText(m2);
+                                        }else{
+                                            rem.setText(" ");
+                                        }
+
                                     }else{
                                         rem.setText(" ");
                                     }
@@ -529,8 +535,13 @@ public class MedicationsActivity extends AppCompatActivity {
                                         int stxt = getResources().getIdentifier(s,"id", getPackageName());
                                         TextView rem = (TextView) findViewById(stxt);
                                         if(med.getReminder()!=null){
-                                            String m2 = med.getReminder().getDate() + " " + med.getReminder().getTime();
-                                            rem.setText(m2);
+                                            if(med.getReminder().getDate()!=null){
+                                                String m2 = med.getReminder().getDate() + " " + med.getReminder().getTime();
+
+                                                rem.setText(m2);
+                                            }else{
+                                                rem.setText(" ");
+                                            }
                                         }else{
                                             rem.setText(" ");
                                         }
