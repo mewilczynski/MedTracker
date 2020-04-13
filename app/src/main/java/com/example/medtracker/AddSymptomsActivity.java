@@ -23,6 +23,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 
 public class AddSymptomsActivity extends AppCompatActivity {
@@ -67,7 +71,7 @@ public class AddSymptomsActivity extends AppCompatActivity {
             }
         });
 
-        symp_firebase = FirebaseFirestore.getInstance();
+        //symp_firebase = FirebaseFirestore.getInstance();
         //mQuery = symp_firebase.collection("symptoms");
 
         //call on function to add symptoms
@@ -77,7 +81,12 @@ public class AddSymptomsActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newSymptom();
+                //newSymptom();
+                try {
+                    writeDataInternal();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
                 startActivity(intent);
             }
@@ -86,33 +95,88 @@ public class AddSymptomsActivity extends AppCompatActivity {
 
 
     }
-    public class Symptom{
-        public String symptom;
-        public String date;
-        public int uid;
 
-        public Symptom(){
-
-        }
-
-        public Symptom(String symptom, String date, int uid){
-            this.symptom = symptom;
-            this.date = date;
-            this.uid = uid;
-        }
-    }
 
     protected void newSymptom(){
-        CollectionReference symp = symp_firebase.collection("symptoms");
+        CollectionReference symp = symp_firebase.collection("symptoms1");
         EditText editSymptom = (EditText) findViewById(R.id.editText8);
         String symptom = editSymptom.getText().toString();
         EditText datepicker2 = (EditText) findViewById(R.id.editText3);
         String date = datepicker2.getText().toString();
 
-        Symptom newSymptom = new Symptom(symptom, date, uid);
-        symp.document(Integer.toString(uid)+ "-"+Integer.toString(symp_id)).set(newSymptom);
+        Symptom newSymptom = new Symptom(symptom, date);
+        String uid = newSymptom.getSymptom()+newSymptom.getDate();
+        symp.document(uid).set(newSymptom);
 
     }
+
+    private void writeDataInternal() throws IOException {
+
+
+        boolean check = false;
+        EditText editSymptom = (EditText) findViewById(R.id.editText8);
+        String symptom = editSymptom.getText().toString();
+        EditText datepicker2 = (EditText) findViewById(R.id.editText3);
+        String date = datepicker2.getText().toString();
+
+        Symptom newSymptom = new Symptom(symptom, date);
+
+        File path = getApplicationContext().getFilesDir();
+
+        File file = new File(path,"symptoms3.txt");
+
+        if(!file.exists()){
+            file.createNewFile();
+            String s = newSymptom.getDate()+"^"+newSymptom.getSymptom()+"#";
+            FileOutputStream stream = new FileOutputStream(file);
+            try{
+                stream.write(s.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally{
+                stream.close();
+            }
+            check=true;
+        }
+
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+
+        FileInputStream in = new FileInputStream(file);
+        try{
+            in.read(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            in.close();
+        }
+
+        String contents = new String(bytes);
+
+        if(contents.isEmpty()){
+
+        }else{
+            if(!check){
+                StringBuilder str = new StringBuilder(contents);
+
+                String s = newSymptom.getDate()+"^"+newSymptom.getSymptom()+"#";
+                str.append(s);
+
+                FileOutputStream stream = new FileOutputStream(file);
+                try{
+                    stream.write(str.toString().getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally{
+                    stream.close();
+                }
+            }
+
+        }
+
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -143,7 +207,7 @@ public class AddSymptomsActivity extends AppCompatActivity {
             case R.id.item5:
                 Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent5);
-
+                return true;
             case R.id.item6:
                 signOut();
 

@@ -24,6 +24,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 
 public class AddNoteActivity extends AppCompatActivity {
@@ -43,8 +47,14 @@ public class AddNoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), NotesActivity.class);
+                try {
+                    writeDataInternal();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 startActivity(intent);
-                writeNewNote();
+
+                //writeNewNote();
                // uid++;
             }
         });
@@ -93,7 +103,72 @@ public class AddNoteActivity extends AppCompatActivity {
         }
 
     }
+    private void writeDataInternal() throws IOException {
 
+
+        boolean check = false;
+        EditText editSymptom = (EditText) findViewById(R.id.editNoteText);
+        String symptom = editSymptom.getText().toString();
+        EditText datepicker2 = (EditText) findViewById(R.id.editDateText);
+        String date = datepicker2.getText().toString();
+
+        Symptom newSymptom = new Symptom(symptom, date);
+
+        File path = getApplicationContext().getFilesDir();
+
+        File file = new File(path,"notes.txt");
+
+        if(!file.exists()){
+            file.createNewFile();
+            String s = newSymptom.getDate()+"^"+newSymptom.getSymptom()+"#";
+            FileOutputStream stream = new FileOutputStream(file);
+            try{
+                stream.write(s.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally{
+                stream.close();
+            }
+            check=true;
+        }
+
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+
+        FileInputStream in = new FileInputStream(file);
+        try{
+            in.read(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            in.close();
+        }
+
+        String contents = new String(bytes);
+
+        if(contents.isEmpty()){
+
+        }else{
+            if(!check){
+                StringBuilder str = new StringBuilder(contents);
+
+                String s = newSymptom.getDate()+"^"+newSymptom.getSymptom()+"#";
+                str.append(s);
+
+                FileOutputStream stream = new FileOutputStream(file);
+                try{
+                    stream.write(str.toString().getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally{
+                    stream.close();
+                }
+            }
+
+        }
+
+
+    }
 
     private void writeNewNote() {
         //Date date = new Date();
@@ -143,7 +218,7 @@ public class AddNoteActivity extends AppCompatActivity {
             case R.id.item5:
                 Intent intent5 = new Intent(getApplicationContext(), NotesActivity.class);
                 startActivity(intent5);
-
+                return true;
             case R.id.item6:
                 signOut();
 

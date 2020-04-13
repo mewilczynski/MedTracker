@@ -10,10 +10,10 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:textColor="#4566C8"
         android:textSize="18sp"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,11 +22,11 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
         android:textColor="#4566C8"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,90 +40,149 @@
         android:textColor="#4566C8"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/medtxt1"
+        android:id="@+id/date2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="18dp"
         android:text="@string/date1"
         android:textColor="#4566C8"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintBottom_toTopOf="@+id/note2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note1" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="12dp"
-        android:text="@string/note2"
-        android:textColor="#4566C8"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/medtxt1"
-        app:layout_constraintTop_toBottomOf="@+id/medtxt1" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="17dp"
-        android:text="@string/note1"
-        android:textColor="#4566C8"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/medtxt2"
-        app:layout_constraintTop_toBottomOf="@+id/medtxt2" />
-
-    <TextView
-        android:id="@+id/medtxt2"
+        android:id="@+id/date3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginBottom="26dp"
+        android:text="@string/date1"
+        android:textColor="#4566C8"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/note3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note2" />
+
+    <TextView
+        android:id="@+id/date4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/date1"
+        android:textColor="#4566C8"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/note4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note3" />
+
+    <TextView
+        android:id="@+id/note2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="29dp"
+        android:text="@string/note2"
+        android:textColor="#4566C8"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/date3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date2" />
+
+    <TextView
+        android:id="@+id/note1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/note1"
+        android:textColor="#4566C8"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/date2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date1" />
+
+    <TextView
+        android:id="@+id/note3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="21dp"
+        android:text="@string/note1"
+        android:textColor="#4566C8"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/date4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date3" />
+
+    <TextView
+        android:id="@+id/note4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/note1"
+        android:textColor="#4566C8"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date4" />
+
+    <TextView
+        android:id="@+id/date1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="17dp"
         android:text="@string/date2"
         android:textColor="#4566C8"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/note1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7" />
 
     <Button
         android:id="@+id/add_note_btn"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
         android:layout_marginBottom="70dp"
         android:background="@drawable/circle_button"
         android:text="@string/plus_btn_txt"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
         android:textSize="60dip"
-        android:layout_gravity="center_vertical"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/note4" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar7"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
+        android:layout_width="350dp"
+        android:layout_height="5dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="67dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="63dp"
         android:background="#4566C8"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/medtxt2"
+        app:layout_constraintBottom_toTopOf="@+id/date1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
